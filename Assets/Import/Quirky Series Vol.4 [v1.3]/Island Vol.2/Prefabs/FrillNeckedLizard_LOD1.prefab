@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!136 &136858501842779920
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3740459612075068023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.56739616
+  m_Height: 2.8533933
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.55601835, z: 0.15164101}
+--- !u!1001 &3740459612075166933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_Name
+      value: FrillNeckedLizard_LOD1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7153c78045d35894fb23152708f2eddc, type: 2}
+    - target: {fileID: 13700000, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 29
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26ce93d0f5355584eae07c4fe0ca82ed, type: 3}
+--- !u!1 &3740459612075068023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 26ce93d0f5355584eae07c4fe0ca82ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 3740459612075166933}
+  m_PrefabAsset: {fileID: 0}

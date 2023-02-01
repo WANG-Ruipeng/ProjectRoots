@@ -1,0 +1,407 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3394233043533761842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108417896032317878}
+  - component: {fileID: 9136291519277232845}
+  - component: {fileID: 7498319675945926537}
+  m_Layer: 0
+  m_Name: Gemsbok
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108417896032317878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394233043533761842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3936351003819511561}
+  - {fileID: 1909813454069664194}
+  - {fileID: 5221243699745176735}
+  - {fileID: 6035746736714289347}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &9136291519277232845
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394233043533761842}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 1.2634819, z: -0.19782019}
+  m_Size: 2.9139328
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.95
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3936351003808177711}
+  - screenRelativeHeight: 0.7
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1909813454081005796}
+  - screenRelativeHeight: 0.35
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5221243699758476729}
+  - screenRelativeHeight: 0.05
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6035746736725754341}
+  m_Enabled: 1
+--- !u!136 &7498319675945926537
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394233043533761842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.597445
+  m_Height: 2.224827
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.9663222, z: 0.12546027}
+--- !u!1001 &496267369521092858
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 108417896032317878}
+    m_Modifications:
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045229877644102936, guid: 166fffcd8096c9a45bc9b67e4848734b,
+        type: 3}
+      propertyPath: m_Name
+      value: Gemsbok_LOD1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 166fffcd8096c9a45bc9b67e4848734b, type: 3}
+--- !u!4 &1909813454069664194 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2045229877643809080, guid: 166fffcd8096c9a45bc9b67e4848734b,
+    type: 3}
+  m_PrefabInstance: {fileID: 496267369521092858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1909813454081005796 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2045229877630500894, guid: 166fffcd8096c9a45bc9b67e4848734b,
+    type: 3}
+  m_PrefabInstance: {fileID: 496267369521092858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &715329604085434495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 108417896032317878}
+    m_Modifications:
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726748842670450880, guid: 3ef01c3d6c97a8645badc3520864de36,
+        type: 3}
+      propertyPath: m_Name
+      value: Gemsbok_LOD2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ef01c3d6c97a8645badc3520864de36, type: 3}
+--- !u!4 &5221243699745176735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4726748842670421216, guid: 3ef01c3d6c97a8645badc3520864de36,
+    type: 3}
+  m_PrefabInstance: {fileID: 715329604085434495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5221243699758476729 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4726748842656851398, guid: 3ef01c3d6c97a8645badc3520864de36,
+    type: 3}
+  m_PrefabInstance: {fileID: 715329604085434495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5957526379805604639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 108417896032317878}
+    m_Modifications:
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103060524417644540, guid: 9c8ac3b1864559e409a287e7b496de7e,
+        type: 3}
+      propertyPath: m_Name
+      value: Gemsbok_LOD3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c8ac3b1864559e409a287e7b496de7e, type: 3}
+--- !u!4 &6035746736714289347 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 103060524417215452, guid: 9c8ac3b1864559e409a287e7b496de7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5957526379805604639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6035746736725754341 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 103060524422920954, guid: 9c8ac3b1864559e409a287e7b496de7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5957526379805604639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7040675731179967532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 108417896032317878}
+    m_Modifications:
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274986698298328837, guid: 423649f6ce230674bbb069ae66647541,
+        type: 3}
+      propertyPath: m_Name
+      value: Gemsbok_LOD0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 423649f6ce230674bbb069ae66647541, type: 3}
+--- !u!4 &3936351003819511561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6274986698297842469, guid: 423649f6ce230674bbb069ae66647541,
+    type: 3}
+  m_PrefabInstance: {fileID: 7040675731179967532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3936351003808177711 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6274986698301442563, guid: 423649f6ce230674bbb069ae66647541,
+    type: 3}
+  m_PrefabInstance: {fileID: 7040675731179967532}
+  m_PrefabAsset: {fileID: 0}

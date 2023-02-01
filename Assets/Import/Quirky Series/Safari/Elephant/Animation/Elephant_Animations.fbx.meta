@@ -1,0 +1,827 @@
+fileFormatVersion: 2
+guid: 7de417436128ec941b0ca217b92e9320
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: body
+    100002: ear.L
+    100004: ear.R
+    100006: //RootNode
+    100008: Elephant_LOD1
+    100010: leg.B.L
+    100012: leg.B.R
+    100014: leg.F.L
+    100016: leg.F.R
+    100018: Rig
+    100020: root
+    100022: tail
+    100024: tail.01
+    100026: trunk_arm
+    100028: trunk_base
+    100030: trunk_inb
+    100032: trunk_middle
+    400000: body
+    400002: ear.L
+    400004: ear.R
+    400006: //RootNode
+    400008: Elephant_LOD1
+    400010: leg.B.L
+    400012: leg.B.R
+    400014: leg.F.L
+    400016: leg.F.R
+    400018: Rig
+    400020: root
+    400022: tail
+    400024: tail.01
+    400026: trunk_arm
+    400028: trunk_base
+    400030: trunk_inb
+    400032: trunk_middle
+    4300000: Elephant_LOD1
+    7400000: Bounce
+    7400002: Clicked
+    7400004: Munch
+    7400006: Idle_A
+    7400008: Roll
+    7400010: Run
+    7400012: Spin
+    7400014: Swim
+    7400016: Walk
+    7400018: Idle_B
+    7400020: Idle_C
+    9500000: //RootNode
+    13700000: Elephant_LOD1
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Elephant
+    second: {fileID: 2100000, guid: 2536c30628eec744bb361d7ea6a58bd6, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Bounce
+      takeName: Rig|Bounce
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Clicked
+      takeName: Rig|Clicked
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Munch
+      takeName: Rig|Munch
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Roll
+      takeName: Rig|Roll
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Rig|Run
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Spin
+      takeName: Rig|Spin
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Swim
+      takeName: Rig|Swim
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Rig|Walk
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_A
+      takeName: Rig|Idle
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_B
+      takeName: Rig|Idle
+      firstFrame: 11
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_C
+      takeName: Rig|Idle
+      firstFrame: 22
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Elephant_LOD1
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: Rig/root
+        weight: 1
+      - path: Rig/root/body
+        weight: 1
+      - path: Rig/root/body/ear.L
+        weight: 1
+      - path: Rig/root/body/ear.R
+        weight: 1
+      - path: Rig/root/body/tail
+        weight: 1
+      - path: Rig/root/body/tail/tail.01
+        weight: 1
+      - path: Rig/root/body/trunk_base
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle
+        weight: 1
+      - path: Rig/root/body/trunk_base/trunk_inb/trunk_middle/trunk_arm
+        weight: 1
+      - path: Rig/root/leg.B.L
+        weight: 1
+      - path: Rig/root/leg.B.R
+        weight: 1
+      - path: Rig/root/leg.F.L
+        weight: 1
+      - path: Rig/root/leg.F.R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
