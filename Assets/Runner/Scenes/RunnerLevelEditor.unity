@@ -123,10 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
---- !u!1 &410087039
-GameObject:
-=======
 --- !u!21 &34990241
 Material:
   serializedVersion: 8
@@ -321,7 +317,6 @@ Transform:
 --- !u!21 &54949397
 Material:
   serializedVersion: 8
->>>>>>> 0e92f28d87b14de321963c283457a0690547eb49
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
