@@ -131,7 +131,7 @@ namespace HyperCasual.Runner
             {
                 m_StartHeight = m_SkinnedMeshRenderer.bounds.size.y;
             }
-            else 
+            else
             {
                 m_StartHeight = 1.0f;
             }
@@ -258,8 +258,8 @@ namespace HyperCasual.Runner
         void Update()
         {
             float deltaTime = Time.deltaTime;
-            Debug.Log(m_TargetSpeed);
-            
+            //Debug.Log(m_TargetSpeed);
+
             UpdateTargetScale(deltaTime);
 
             UpdateTargetSpeed(deltaTime);
