@@ -59,7 +59,7 @@ namespace HyperCasual.Runner
 
         Transform m_Transform;
         Vector3 m_StartPosition;
-        bool m_HasInput;
+        [SerializeField] public bool m_HasInput;
         float m_MaxXPosition;
         float m_XPos;
         float m_ZPos;
@@ -72,6 +72,7 @@ namespace HyperCasual.Runner
 
         const float k_HalfWidth = 0.5f;
 
+        ///下面这里的写法，=>，是为了将这个变量保护起来，使之变为只读的模式
         /// <summary> The player's root Transform component. </summary>
         public Transform Transform => m_Transform;
 
@@ -139,8 +140,7 @@ namespace HyperCasual.Runner
         }
 
         /// <summary>
-        /// Returns the current default speed based on the currently
-        /// selected PlayerSpeed preset.
+        /// 根据当前玩家的速度模式变量来选择不同的速度
         /// </summary>
         public float GetDefaultSpeed()
         {
@@ -165,7 +165,7 @@ namespace HyperCasual.Runner
         public void AdjustSpeed(float speed)
         {
             m_TargetSpeed += speed;
-            m_TargetSpeed = Mathf.Max(0.0f, m_TargetSpeed);
+            m_TargetSpeed = Mathf.Max(0.0f, m_TargetSpeed);//设定速度最大为0，暂时没懂为什么要这样
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace HyperCasual.Runner
         }
 
         /// <summary>
-        /// Returns the player's transform component
+        /// 获取玩家顶部的向量，大概是为了手机端移动的操作所需要的变量
         /// </summary>
         public Vector3 GetPlayerTop()
         {
@@ -215,7 +215,7 @@ namespace HyperCasual.Runner
 
             float fullWidth = m_MaxXPosition * 2.0f;
             m_TargetPosition = m_TargetPosition + fullWidth * normalizedDeltaPosition;
-            m_TargetPosition = Mathf.Clamp(m_TargetPosition, -m_MaxXPosition, m_MaxXPosition);
+            m_TargetPosition = Mathf.Clamp(m_TargetPosition, -m_MaxXPosition, m_MaxXPosition);//限定范围不超过最大的X横向范围
             m_HasInput = true;
         }
 
@@ -234,11 +234,11 @@ namespace HyperCasual.Runner
         {
             // Level is centered at X = 0, so the maximum player
             // X position is half of the level width
-            m_MaxXPosition = levelWidth * k_HalfWidth;
+            m_MaxXPosition = levelWidth * k_HalfWidth;//x轴的水平方向的位移就是最大关卡的宽度，如果宽度为1，那么水平方向的可行走范围为（-0.5，0.5）
         }
 
         /// <summary>
-        /// Returns player to their starting position
+        /// 用来重置玩家的初始状态，包括设定初始速度、位置等
         /// </summary>
         public void ResetPlayer()
         {
@@ -258,64 +258,24 @@ namespace HyperCasual.Runner
         void Update()
         {
             float deltaTime = Time.deltaTime;
+            Debug.Log(m_TargetSpeed);
+            
+            UpdateTargetScale(deltaTime);
 
-            // Update Scale
+            UpdateTargetSpeed(deltaTime);
 
-            if (!Approximately(m_Transform.localScale, m_TargetScale))
-            {
-                m_Scale = Vector3.Lerp(m_Scale, m_TargetScale, deltaTime * m_ScaleVelocity);
-                m_Transform.localScale = m_Scale;
-            }
 
-            // Update Speed
+            float speed = m_Speed * deltaTime;//写着是速度，其实是这一帧内的位移变化量
 
-            if (!m_AutoMoveForward && !m_HasInput)
-            {
-                Decelerate(deltaTime, 0.0f);
-            }
-            else if (m_TargetSpeed < m_Speed)
-            {
-                Decelerate(deltaTime, m_TargetSpeed);
-            }
-            else if (m_TargetSpeed > m_Speed)
-            {
-                Accelerate(deltaTime, m_TargetSpeed);
-            }
-
-            float speed = m_Speed * deltaTime;
 
             // Update position
 
-            m_ZPos += speed;
+            UpdatePos(speed);
 
-            if (m_HasInput)
-            {
-                float horizontalSpeed = speed * m_HorizontalSpeedFactor;
+            SetAnimatorSpeed(deltaTime);
+            PlayerTurn(speed);
 
-                float newPositionTarget = Mathf.Lerp(m_XPos, m_TargetPosition, horizontalSpeed);
-                float newPositionDifference = newPositionTarget - m_XPos;
-
-                newPositionDifference = Mathf.Clamp(newPositionDifference, -horizontalSpeed, horizontalSpeed);
-
-                m_XPos += newPositionDifference;
-            }
-
-            m_Transform.position = new Vector3(m_XPos, m_Transform.position.y, m_ZPos);
-
-            if (m_Animator != null && deltaTime > 0.0f)
-            {
-                float distanceTravelledSinceLastFrame = (m_Transform.position - m_LastPosition).magnitude;
-                float distancePerSecond = distanceTravelledSinceLastFrame / deltaTime;
-
-                m_Animator.SetFloat(s_Speed, distancePerSecond);
-            }
-
-            if (m_Transform.position != m_LastPosition)
-            {
-                m_Transform.forward = Vector3.Lerp(m_Transform.forward, (m_Transform.position - m_LastPosition).normalized, speed);
-            }
-
-            m_LastPosition = m_Transform.position;
+            m_LastPosition = m_Transform.position;//这一帧结束时更新上一帧的位置
         }
 
         void Accelerate(float deltaTime, float targetSpeed)
@@ -330,9 +290,110 @@ namespace HyperCasual.Runner
             m_Speed = Mathf.Max(m_Speed, targetSpeed);
         }
 
+        /// <summary>
+        /// 判断两个向量是否相等
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         bool Approximately(Vector3 a, Vector3 b)
         {
             return Mathf.Approximately(a.x, b.x) && Mathf.Approximately(a.y, b.y) && Mathf.Approximately(a.z, b.z);
+        }
+
+
+        void UpdateTargetSpeed(float deltaTime)
+        {
+            // Update Speed
+
+            if (!m_AutoMoveForward && !m_HasInput)
+            {
+                Decelerate(deltaTime, 0.0f);//减速至0
+            }
+            else if (m_TargetSpeed < m_Speed)
+            {
+                Decelerate(deltaTime, m_TargetSpeed);//如果速度大于目标速度则减速至目标速度
+            }
+            else if (m_TargetSpeed > m_Speed)
+            {
+                Accelerate(deltaTime, m_TargetSpeed);
+            }
+        }
+
+        /// <summary>
+        /// 改变位置
+        /// </summary>
+        /// <param name="speed"></param>
+        void UpdatePos(float speed)
+        {
+            //执行水平方向的位移
+            if (m_HasInput)
+            {
+                float horizontalSpeed = speed * m_HorizontalSpeedFactor;
+
+                float newPositionTarget = Mathf.Lerp(m_XPos, m_TargetPosition, horizontalSpeed);
+                float newPositionDifference = newPositionTarget - m_XPos;//获取相差的位移向量
+
+                newPositionDifference = Mathf.Clamp(newPositionDifference, -horizontalSpeed, horizontalSpeed);
+
+                m_XPos += newPositionDifference;//改变X方向的位移
+            }
+
+            //执行Z方向的位移
+            m_ZPos += speed;
+            m_Transform.position = new Vector3(m_XPos, m_Transform.position.y, m_ZPos);
+
+
+
+        }
+
+        /// <summary>
+        /// 设定动画机的速度
+        /// </summary>
+        void SetAnimatorSpeed(float deltaTime)
+        {
+            if (m_Animator != null && deltaTime > 0.0f)
+            {
+                float distanceTravelledSinceLastFrame = (m_Transform.position - m_LastPosition).magnitude;
+                float distancePerSecond = distanceTravelledSinceLastFrame / deltaTime;//每秒所走的距离
+
+                m_Animator.SetFloat(s_Speed, distancePerSecond);//设定速度
+            }
+        }
+
+        /// <summary>
+        /// 往目标规模的大小更新
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        void UpdateTargetScale(float deltaTime)
+        {
+            if (!Approximately(m_Transform.localScale, m_TargetScale))//判断目标规模和当前规模是否一致
+            {
+                //如果不一致则让
+                m_Scale = Vector3.Lerp(m_Scale, m_TargetScale, deltaTime * m_ScaleVelocity);
+                m_Transform.localScale = m_Scale;
+            }
+        }
+
+        /// <summary>
+        /// 实现玩家的转向
+        /// </summary>
+        void PlayerTurn(float speed)
+        {
+            if (m_Transform.position != m_LastPosition)
+            {
+                //实现人物的转向
+                m_Transform.forward = Vector3.Lerp(m_Transform.forward, (m_Transform.position - m_LastPosition).normalized, speed);
+            }
+        }
+
+
+
+        void InputHandler()
+        {
+            float InputX = Input.GetAxis("Horizontal");
+            float InputY = Input.GetAxis("Vertical");
+            //if(Input.get)
         }
     }
 }
