@@ -22,7 +22,7 @@ namespace HyperCasual.Runner
 
         GameObject m_LevelParentGO;
         GameObject m_LoadedLevelGO;
-        GameObject m_TerrainGO;
+        GameObject m_TerrainGO;//原本代码内只有一个Terrain物体，现在改成所有地面的母物体了
         GameObject m_LevelMarkersGO;
 
         List<Spawnable> m_SelectedSpawnables = new List<Spawnable>();
