@@ -20,7 +20,7 @@ namespace HyperCasual.Runner
             /// Width of the terrain to generate.
             /// </summary>
             public float Width;
-            
+
             /// <summary>
             /// Length of the terrain to generate.
             /// </summary>
@@ -281,6 +281,11 @@ namespace HyperCasual.Runner
             meshFilter.sharedMesh = mesh;
             MeshRenderer meshRenderer = terrainGameObject.AddComponent<MeshRenderer>();
             meshRenderer.sharedMaterial = terrainMaterial;
+            BoxCollider collider = terrainGameObject.AddComponent<BoxCollider>();
+            collider.enabled = true;
+            
         }
+
+
     }
 }
