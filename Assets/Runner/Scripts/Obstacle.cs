@@ -8,8 +8,7 @@ namespace HyperCasual.Runner
     /// <summary>
     /// Ends the game on collision, forcing a lose state.
     /// </summary>
-    [ExecuteInEditMode]
-    [RequireComponent(typeof(Collider))]
+    
     public class Obstacle : Spawnable
     {
         const string k_PlayerTag = "Player";
