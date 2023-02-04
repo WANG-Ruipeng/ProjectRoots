@@ -99,11 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c05ff46661a65d4fa1a3cb51ab15ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propType: 6
+  propType: 0
   text: {fileID: 707764445548576823}
   words: yi ping jiang you
-  showWordsDuration: 2
-  credit: 100
+  showWordsDuration: 1
+  score: 100
+  jiaFenTipTime: 1
+  jiaFenTipUpwardDis: 5
   flightTime: 2
   flightHeight: 3
   riseTime: 0.5

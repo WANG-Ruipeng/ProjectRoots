@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2660ca57192e76c46893d2825eef0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JiaFen: 0
+  totalPoints: 0
   TiShenJuanZhou: 0
   ZhuQingTing: 0
   TaiYangSan: 0
@@ -125,6 +125,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4256051056096783086, guid: ae47736950a7a1c4faf56786f3d81605,
     type: 3}
   surfboardPrefab: {fileID: 7591842743721672355, guid: f583ce32fd815e7419f2a83a196b6e66,
+    type: 3}
+  scoreTipPrefab: {fileID: 3285949963271891497, guid: fdd2d16423fcc1346a682007205a2fa3,
     type: 3}
 --- !u!1001 &5535617742786363833
 PrefabInstance:

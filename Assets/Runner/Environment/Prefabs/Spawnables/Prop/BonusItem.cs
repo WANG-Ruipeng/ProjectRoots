@@ -12,7 +12,9 @@ public class BonusItem : MonoBehaviour
     public string words;  //展示给玩家的物品描述
     public float showWordsDuration = 2;  //展示时间
     [Header("------所有加分道具------")]
-    public int credit = 100;  //得分
+    public float score = 100;  //得分
+    public float jiaFenTipTime = 1f;  //得分时的提示持续时间  
+    public float jiaFenTipUpwardDis = 0.5f;  //得分提示上升距离
     [Header("------竹蜻蜓------")]
     public float flightTime = 4;  //飞行时间
     public float flightHeight = 3;  //高度
@@ -80,7 +82,7 @@ public class BonusItem : MonoBehaviour
     IEnumerator JiaFen()//加分道具
     {
         text.text = words;
-        player.GetComponent<PlayerOwnPropsNum>().JiaFen++;
+        StartCoroutine(player.GetComponent<PlayerOwnPropsNum>().GetJiaFen(score, jiaFenTipTime, jiaFenTipUpwardDis));
 
         yield return new WaitForSeconds(showWordsDuration);
         text.text = "";
