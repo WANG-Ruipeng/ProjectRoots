@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998452e8577ff4bb78b32585432cf5a3, type: 3}
+  m_Name: GiroTestLevel
+  m_EditorClassIdentifier: 
+  LevelLength: 100
+  LevelLengthBufferStart: 5
+  LevelLengthBufferEnd: 5
+  LevelWidth: 5
+  LevelThickness: 0.1
+  SnapToGrid: 1
+  GridSize: 1
+  TerrainMaterial: {fileID: 0}
+  StartPrefab: {fileID: 0}
+  EndPrefab: {fileID: 0}
+  Spawnables:
+  - SpawnablePrefab: {fileID: 868862734879333921, guid: 99640c9201e9e314bb12e935da2a29a4,
+      type: 3}
+    Position: {x: -9, y: 0.9302244, z: 22}
+    EulerAngles: {x: 30.000008, y: 180, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    SnapToGrid: 1
+  - SpawnablePrefab: {fileID: 3589644939564013512, guid: a91dd83cf1119514393f1e6d72a4bda1,
+      type: 3}
+    Position: {x: -12, y: -2.85, z: 20}
+    EulerAngles: {x: -0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    SnapToGrid: 1

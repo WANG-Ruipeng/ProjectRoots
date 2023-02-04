@@ -57,7 +57,6 @@ public class AirAttacker : Enemy
     Vector3 PlayerPos => player.Transform.position;
     Vector3 Pos => transform.position;
 
-    Rigidbody rb;
     bool hasFindPlayer;
     bool InsideRange
     {
@@ -173,7 +172,6 @@ public class AirAttacker : Enemy
     protected override void Awake()
     {
         base.Awake();
-        rb = GetComponent<Rigidbody>();
     }
     protected override void Update()
     {
@@ -186,17 +184,5 @@ public class AirAttacker : Enemy
         }
     }
 
-    /// <summary>
-    /// 返回距离相机为distance时的x边界值（绝对值）
-    /// </summary>
-    /// <param name="distance"></param>
-    /// <returns></returns>
-    float GetCameraXBound(float distance)
-    {
-        Camera camera = Camera.main;
-        float halfFOV = camera.fieldOfView * 0.5f * Mathf.Deg2Rad;
-        float aspect = camera.aspect;
 
-        return distance * Mathf.Tan(halfFOV) * aspect;
-    }
 }
