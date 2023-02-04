@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c05ff46661a65d4fa1a3cb51ab15ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propType: 4
+  propType: 6
   text: {fileID: 707764445548576823}
   words: yi ping jiang you
   showWordsDuration: 2
@@ -110,6 +110,13 @@ MonoBehaviour:
   fallTime: 0.5
   dashTime: 3
   dashSpeed: 20
+  surf_Time: 4
+  surf_Speed: 0
+  surfboardYOffset: 0.5
+  bulletSpeed: 50
+  bulletLifeTime: 1
+  bulletAppearZOffset: 2
+  bulletAppearYOffset: 1
 --- !u!23 &4977299972340067612
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -130,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf39c38b7ee8341249aecd2609925601, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -274,7 +281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf39c38b7ee8341249aecd2609925601, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -397,7 +404,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf39c38b7ee8341249aecd2609925601, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

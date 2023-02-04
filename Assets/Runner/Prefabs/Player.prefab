@@ -121,6 +121,11 @@ MonoBehaviour:
   ChongLangBan: 0
   YiDaLiPao: 0
   isDashing: 0
+  isSurfing: 0
+  bulletPrefab: {fileID: 4256051056096783086, guid: ae47736950a7a1c4faf56786f3d81605,
+    type: 3}
+  surfboardPrefab: {fileID: 7591842743721672355, guid: f583ce32fd815e7419f2a83a196b6e66,
+    type: 3}
 --- !u!1001 &5535617742786363833
 PrefabInstance:
   m_ObjectHideFlags: 0

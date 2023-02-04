@@ -21,7 +21,16 @@ public class BonusItem : MonoBehaviour
     [Header("------红色内裤------")]
     public float dashTime = 3;  //冲刺时间
     public float dashSpeed = 20;  //速度
+    [Header("------冲浪板------")]
+    public float surf_Time = 4f;  //冲浪持续时间
+    public float surf_Speed = 0;  //冲浪时的速度，取0时默认以player自动行进速度
+    public float surfboardYOffset = -1;  //冲浪板生成时的Y偏移
 
+    [Header("------意大利炮------")]
+    public float bulletSpeed = 20f;  //炮弹速度
+    public float bulletLifeTime = 4;  //炮弹存在时间
+    public float bulletAppearZOffset = 2;  //炮弹在player前面多远处生成
+    public float bulletAppearYOffset = 1;  //炮弹相对player偏移
 
     private GameObject player;  //发生碰撞时引用
     private void Start()
@@ -117,6 +126,7 @@ public class BonusItem : MonoBehaviour
     {
         text.text = words;
         player.GetComponent<PlayerOwnPropsNum>().ChongLangBan++;
+        StartCoroutine(player.GetComponent<PlayerOwnPropsNum>().GetChongLangBan(surf_Time, surf_Speed, surfboardYOffset));
 
         yield return new WaitForSeconds(showWordsDuration);
         text.text = "";
@@ -135,6 +145,7 @@ public class BonusItem : MonoBehaviour
     {
         text.text = words;
         player.GetComponent<PlayerOwnPropsNum>().YiDaLiPao++;
+        StartCoroutine(player.GetComponent<PlayerOwnPropsNum>().GetYiDaLiPao(bulletSpeed, bulletLifeTime, bulletAppearZOffset, bulletAppearYOffset));
 
         yield return new WaitForSeconds(showWordsDuration);
         text.text = "";
