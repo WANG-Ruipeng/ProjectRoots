@@ -12,6 +12,7 @@ namespace HyperCasual.Runner
     public class WaterFall : Spawnable
     {
         //TODO:策划说要让玩家碰到瀑布就停止
+        
     }
 
 }

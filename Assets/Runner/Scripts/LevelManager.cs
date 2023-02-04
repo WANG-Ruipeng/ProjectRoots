@@ -43,6 +43,16 @@ namespace HyperCasual.Runner
         public void AddSpawnable(Spawnable spawnable)
         {
             m_ActiveSpawnables.Add(spawnable);
+
+            GameObject lightObj = GameObject.Find("Directional Light");
+            if(lightObj != null)
+            {
+                Light light = lightObj.GetComponent<Light>();
+                if(light != null)
+                {
+                    light.shadows = LightShadows.None;
+                }
+            }
         }
 
         /// <summary>

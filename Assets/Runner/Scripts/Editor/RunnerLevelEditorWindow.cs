@@ -22,8 +22,9 @@ namespace HyperCasual.Runner
 
         GameObject m_LevelParentGO;
         GameObject m_LoadedLevelGO;
-        GameObject m_TerrainGO;//原本代码内只有一个Terrain物体，现在改成所有地面的母物体了
+        GameObject m_TerrainGO;
         GameObject m_LevelMarkersGO;
+        GameObject m_LandParentGO;
 
         List<Spawnable> m_SelectedSpawnables = new List<Spawnable>();
         Color m_ActiveColor;
@@ -47,6 +48,9 @@ namespace HyperCasual.Runner
         const string k_LevelParentGameObjectName = "LevelParent";
         const string k_LevelEditorSceneName = "RunnerLevelEditor";
         const string k_LevelEditorScenePath = "Assets/Runner/Scenes/RunnerLevelEditor.unity";
+
+        float maxOffset = 10;
+        float minOffset = 1;
 
         /// <summary>
         /// Returns the loaded LevelDefinition.
@@ -387,7 +391,23 @@ namespace HyperCasual.Runner
                 EditorGUILayout.Space();
             }
 
+            GUILayout.Label("Land Generations", EditorStyles.boldLabel);
+            maxOffset = Mathf.Max(minOffset, EditorGUILayout.FloatField("Max offset", maxOffset));
+            minOffset = Mathf.Min(maxOffset, EditorGUILayout.FloatField("Min offset", minOffset));
+            EditorGUILayout.Space();
+
+            if (GUILayout.Button("Generate Lands"))
+            {
+                GenerateLand(m_LoadedLevelDefinition);
+            }
+            if (GUILayout.Button("Delete Lands"))
+            {
+                DeleteLand(m_LoadedLevelDefinition);
+            }
+            EditorGUILayout.Space();
+
             EditorGUILayout.HelpBox($"New objects added to the level require a {nameof(Spawnable)} type component added to the GameObject", MessageType.Info);
+
         }
 
         bool LevelNotLoaded()
@@ -408,6 +428,8 @@ namespace HyperCasual.Runner
             m_LevelParentGO = new GameObject(k_LevelParentGameObjectName);
             m_LevelParentGO.tag = s_LevelParentTag;
 
+            m_LandParentGO = new GameObject("Land Parent");
+
             GameManager.LoadLevel(m_LoadedLevelDefinition, ref m_LoadedLevelGO);
             GameManager.CreateTerrain(m_LoadedLevelDefinition, ref m_TerrainGO);
             GameManager.PlaceLevelMarkers(m_LoadedLevelDefinition, ref m_LevelMarkersGO);
@@ -415,6 +437,7 @@ namespace HyperCasual.Runner
             m_LoadedLevelGO.transform.SetParent(m_LevelParentGO.transform);
             m_TerrainGO.transform.SetParent(m_LevelParentGO.transform);
             m_LevelMarkersGO.transform.SetParent(m_LevelParentGO.transform);
+            m_LandParentGO.transform.SetParent(m_LevelParentGO.transform);
             HasLoadedLevel = true;
 
             string levelPath = AssetDatabase.GetAssetPath(levelDefinition);
@@ -527,6 +550,90 @@ namespace HyperCasual.Runner
 
             // Write changes to disk
             AssetDatabase.SaveAssets();
+        }
+
+        void GenerateLand(LevelDefinition levelDefinition)
+        {
+            GameObject leftStartGO = GameObject.Find("LeftStartLand");
+            GameObject rightStartGO = GameObject.Find("RightStartLand");
+            GameObject leftCloneParent = GameObject.Find("LeftCloneParent");
+            GameObject rightCloneParent = GameObject.Find("RightCloneParent");
+
+            if (m_LandParentGO == null)
+            {
+                m_LandParentGO = new GameObject("Land Parent");
+                m_LandParentGO.transform.SetParent(m_LevelParentGO.transform);
+            }
+            
+            if(leftCloneParent == null)
+            {
+                leftCloneParent = new GameObject("LeftCloneParent");
+                leftCloneParent.transform.SetParent(m_LandParentGO.transform);
+            }
+            if (rightCloneParent == null)
+            {
+                rightCloneParent = new GameObject("RightCloneParent");
+                rightCloneParent.transform.SetParent(m_LandParentGO.transform);
+            }
+            if (leftStartGO == null || rightStartGO == null)
+            {
+                Debug.LogError("Unable to find basis land.");
+                return;
+            }
+
+            leftStartGO.transform.SetParent(m_LandParentGO.transform);
+            rightStartGO.transform.SetParent(m_LandParentGO.transform);
+
+            int i = 0;
+            int maxClones = 25;
+            float zDelta = 0;
+
+            while(zDelta < levelDefinition.LevelLength + levelDefinition.LevelLengthBufferEnd && i < maxClones)
+            {
+                GameObject g = GameObject.Instantiate(leftStartGO);
+                zDelta += Random.Range(minOffset, maxOffset);
+                Vector3 v3 = g.transform.position;
+                v3.z += zDelta;
+                g.transform.position = v3;
+                g.transform.SetParent(leftCloneParent.transform);
+                i++;
+            }
+
+            zDelta = 0;
+            i = 0;
+            while (zDelta < m_LoadedLevelDefinition.LevelLength + m_LoadedLevelDefinition.LevelLengthBufferEnd && i < maxClones)
+            {
+                GameObject g = GameObject.Instantiate(rightStartGO);
+                zDelta += Random.Range(minOffset, maxOffset);
+                Vector3 v3 = g.transform.position;
+                v3.z += zDelta;
+                g.transform.position = v3;
+                g.transform.SetParent(rightCloneParent.transform);
+                i++;
+            }
+        }
+
+        void DeleteLand(LevelDefinition levelDefinition)
+        {
+            GameObject leftCloneParent = GameObject.Find("LeftCloneParent");
+            GameObject rightCloneParent = GameObject.Find("RightCloneParent");
+            int childCount;
+            if (leftCloneParent == null || rightCloneParent == null)
+            {
+                Debug.LogError("Unable to find parents objects");
+                return;
+            }
+
+            childCount = leftCloneParent.transform.childCount;
+            for(int i = 0; i < childCount; i++)
+            {
+                DestroyImmediate(leftCloneParent.transform.GetChild(0).gameObject);
+            }
+            childCount = rightCloneParent.transform.childCount;
+            for (int i = 0; i < childCount; i++)
+            {
+                DestroyImmediate(rightCloneParent.transform.GetChild(0).gameObject);
+            }
         }
 
         void SaveAutoSaveSettings()

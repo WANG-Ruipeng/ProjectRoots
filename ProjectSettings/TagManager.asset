@@ -8,6 +8,7 @@ TagManager:
   - LowObstacle
   - LevelParent
   - Projectile
+  - Light
   layers:
   - Default
   - TransparentFX

@@ -47,6 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772645ebc958145c092d6949f827e632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZMoveAcceraltion: 0
+  ZMoveSpeed: 10
+  ZFastMoveSpeed: 15
+  XMoveAcceraltion: 0
+  XMoveSpeed: 10
+  dragRatio: 0.9
+  disableContinueForce: 1
+  turnSpeed: 100
+  getBackSpeed: 0.05
+  maxTrunAngle: 50
+  bounceForce: 30
+  gameInput: 1
   m_Animator: {fileID: 2141710850789030952}
   m_SkinnedMeshRenderer: {fileID: 3552323526451143052}
   m_PlayerSpeed: 1
