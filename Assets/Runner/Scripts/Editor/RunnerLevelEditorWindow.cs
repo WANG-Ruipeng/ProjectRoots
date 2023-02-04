@@ -25,6 +25,7 @@ namespace HyperCasual.Runner
         GameObject m_TerrainGO;
         GameObject m_LevelMarkersGO;
         GameObject m_LandParentGO;
+        GameObject landPrefab;
 
         List<Spawnable> m_SelectedSpawnables = new List<Spawnable>();
         Color m_ActiveColor;
@@ -356,6 +357,7 @@ namespace HyperCasual.Runner
             EditorGUI.BeginChangeCheck();
             m_LoadedLevelDefinition.StartPrefab = (GameObject)EditorGUILayout.ObjectField("Start Prefab", m_LoadedLevelDefinition.StartPrefab, typeof(GameObject), false, null);
             m_LoadedLevelDefinition.EndPrefab = (GameObject)EditorGUILayout.ObjectField("End Prefab", m_LoadedLevelDefinition.EndPrefab, typeof(GameObject), false, null);
+            landPrefab = (GameObject)EditorGUILayout.ObjectField("Land Prefab",landPrefab, typeof(GameObject), false, null);
             if (EditorGUI.EndChangeCheck())
             {
                 GameManager.PlaceLevelMarkers(m_LoadedLevelDefinition, ref m_LevelMarkersGO);
@@ -478,6 +480,10 @@ namespace HyperCasual.Runner
                             Scale = spawnables[i].transform.lossyScale,
                             BaseColor = spawnables[i].BaseColor
                         };
+                        if(levelDefinition.Spawnables[i].SpawnablePrefab == null)
+                        {
+                            levelDefinition.Spawnables[i].SpawnablePrefab = landPrefab;
+                        }
                     }
                     catch (System.Exception e)
                     {
@@ -590,7 +596,7 @@ namespace HyperCasual.Runner
 
             while(zDelta < levelDefinition.LevelLength + levelDefinition.LevelLengthBufferEnd && i < maxClones)
             {
-                GameObject g = GameObject.Instantiate(leftStartGO);
+                GameObject g = Instantiate(leftStartGO);
                 zDelta += Random.Range(minOffset, maxOffset);
                 Vector3 v3 = g.transform.position;
                 v3.z += zDelta;
@@ -603,7 +609,7 @@ namespace HyperCasual.Runner
             i = 0;
             while (zDelta < m_LoadedLevelDefinition.LevelLength + m_LoadedLevelDefinition.LevelLengthBufferEnd && i < maxClones)
             {
-                GameObject g = GameObject.Instantiate(rightStartGO);
+                GameObject g = Instantiate(rightStartGO);
                 zDelta += Random.Range(minOffset, maxOffset);
                 Vector3 v3 = g.transform.position;
                 v3.z += zDelta;
@@ -615,24 +621,36 @@ namespace HyperCasual.Runner
 
         void DeleteLand(LevelDefinition levelDefinition)
         {
-            GameObject leftCloneParent = GameObject.Find("LeftCloneParent");
-            GameObject rightCloneParent = GameObject.Find("RightCloneParent");
-            int childCount;
-            if (leftCloneParent == null || rightCloneParent == null)
+            string s = "LeftStartLand";
+            GameObject g = GameObject.Find(s);
+            
+            while(g != null)
             {
-                Debug.LogError("Unable to find parents objects");
-                return;
+                DestroyImmediate(g);
+                g = GameObject.Find(s);
             }
 
-            childCount = leftCloneParent.transform.childCount;
-            for(int i = 0; i < childCount; i++)
+            g = GameObject.Find(s + "(Clone)");
+            while (g != null)
             {
-                DestroyImmediate(leftCloneParent.transform.GetChild(0).gameObject);
+                DestroyImmediate(g);
+                g = GameObject.Find(s + "(Clone)");
             }
-            childCount = rightCloneParent.transform.childCount;
-            for (int i = 0; i < childCount; i++)
+
+            s = "RightStartLand";
+            g = GameObject.Find(s);
+
+            while (g != null)
             {
-                DestroyImmediate(rightCloneParent.transform.GetChild(0).gameObject);
+                DestroyImmediate(g);
+                g = GameObject.Find(s);
+            }
+
+            g = GameObject.Find(s + "(Clone)");
+            while (g != null)
+            {
+                DestroyImmediate(g);
+                g = GameObject.Find(s + "(Clone)");
             }
         }
 

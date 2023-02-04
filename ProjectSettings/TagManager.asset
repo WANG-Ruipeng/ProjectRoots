@@ -9,6 +9,7 @@ TagManager:
   - LevelParent
   - Projectile
   - Bullet
+  - Light
   layers:
   - Default
   - TransparentFX

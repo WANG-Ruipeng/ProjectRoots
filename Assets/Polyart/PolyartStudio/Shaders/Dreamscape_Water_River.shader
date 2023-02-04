@@ -11,6 +11,7 @@ Shader "Polyart/Dreamscape Water River"
 		_ColorDepthFade("Color Depth Fade", Float) = 0
 		_Smoothness("Smoothness", Range( 0 , 1)) = 0
 		_Opacity("Opacity", Range( 0 , 1)) = 1
+		_AlphaNum("Tou_Ming_Du", Range( 0 , 1)) = 1
 		[Header(FOAM)]_FoamColor("Foam Color", Color) = (1,1,1,1)
 		_FoamDepthFade("Foam Depth Fade", Float) = 0.19
 		_FoamCutoff("Foam Cutoff", Float) = 0
@@ -265,6 +266,7 @@ Shader "Polyart/Dreamscape Water River"
 			float _WaveNormalIntensity;
 			float _Smoothness;
 			float _Opacity;
+			float _AlphaNum;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -722,7 +724,7 @@ Shader "Polyart/Dreamscape Water River"
 					projScreenPos.xy += refractionOffset.xy;
 					float3 refraction = SHADERGRAPH_SAMPLE_SCENE_COLOR( projScreenPos ) * RefractionColor;
 					color.rgb = lerp( refraction, color.rgb, color.a );
-					color.a = 1;
+					color.a = _AlphaNum;
 				#endif
 
 				#ifdef ASE_FINAL_COLOR_ALPHA_MULTIPLY
@@ -819,6 +821,7 @@ Shader "Polyart/Dreamscape Water River"
 			float _WaveNormalIntensity;
 			float _Smoothness;
 			float _Opacity;
+			float _AlphaNum;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -1099,6 +1102,7 @@ Shader "Polyart/Dreamscape Water River"
 			float _WaveNormalIntensity;
 			float _Smoothness;
 			float _Opacity;
+			float _AlphaNum;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -1376,6 +1380,7 @@ Shader "Polyart/Dreamscape Water River"
 			float _WaveNormalIntensity;
 			float _Smoothness;
 			float _Opacity;
+			float _AlphaNum;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -1789,6 +1794,7 @@ Shader "Polyart/Dreamscape Water River"
 			float _WaveNormalIntensity;
 			float _Smoothness;
 			float _Opacity;
+			float _AlphaNum;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif

@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8786e3f290933ca4ba0d940ff5100e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 0
+  m_SnapToGrid: 1
