@@ -15,7 +15,7 @@ namespace HyperCasual.Runner
     {
         [SerializeField]
         SoundID m_Sound = SoundID.None;
-        
+
         const string k_PlayerTag = "Player";
 
         public ItemPickedEvent m_Event;
@@ -31,7 +31,7 @@ namespace HyperCasual.Runner
         public override void ResetSpawnable()
         {
             m_Collected = false;
-            
+
             for (int i = 0; i < m_Renderers.Length; i++)
             {
                 m_Renderers[i].enabled = true;
@@ -40,9 +40,15 @@ namespace HyperCasual.Runner
 
         protected override void Awake()
         {
-            base.Awake();
+            // base.Awake();
+            m_Transform = transform;  //≤πµƒ
+
 
             m_Renderers = gameObject.GetComponentsInChildren<Renderer>();
+        }
+
+        public override void SetBaseColor(Color baseColor)  //∏≤∏«µÙSpawnableµƒ’‚∂Œ
+        {
         }
 
         void OnTriggerEnter(Collider col)

@@ -22,14 +22,14 @@ namespace HyperCasual.Runner
         [SerializeField] public float ZFastMoveSpeed = 15;//按住上键时的加速的速度
         [SerializeField] public float XMoveAcceraltion;//水平方向的加速度
         [SerializeField] public float XMoveSpeed = 10;//水平方向移动的速度
-        [SerializeField] public float dragRatio=0.9f;//减速系数，数字越小减速越快
-        [SerializeField] public bool disableContinueForce=true;//玩家初始便具有持续性的力使其具有速度，如果想暂时关闭这个持续向前的力则将这个bool关闭即可（可以使用协程实现暂时性的关闭）
+        [SerializeField] public float dragRatio = 0.9f;//减速系数，数字越小减速越快
+        [SerializeField] public bool disableContinueForce = true;//玩家初始便具有持续性的力使其具有速度，如果想暂时关闭这个持续向前的力则将这个bool关闭即可（可以使用协程实现暂时性的关闭）
 
         [Header("旋转参数")]
         public float turnSpeed = 100;
         public float getBackSpeed = 0.05f;//旋转回来的速度
         public float maxTrunAngle = 50f;//最大所能旋转的角度
-        bool startDownSpeed=false;//用于标识玩家此时开始减速
+        bool startDownSpeed = false;//用于标识玩家此时开始减速
 
         [Header("跳跃参数")]
         public float bounceForce = 30f;//鱼的跳跃力
@@ -157,7 +157,7 @@ namespace HyperCasual.Runner
             {
                 m_StartHeight = m_SkinnedMeshRenderer.bounds.size.y;
             }
-            else 
+            else
             {
                 m_StartHeight = 1.0f;
             }
@@ -285,7 +285,7 @@ namespace HyperCasual.Runner
         {
             float deltaTime = Time.deltaTime;
             //Debug.Log(m_TargetSpeed);
-            
+
             UpdateTargetScale(deltaTime);
 
             //UpdateTargetSpeed(deltaTime);
@@ -317,7 +317,7 @@ namespace HyperCasual.Runner
         {
             m_Speed += deltaTime * m_AccelerationSpeed;
             m_Speed = Mathf.Min(m_Speed, targetSpeed);
-            
+
         }
 
         void Decelerate(float deltaTime, float targetSpeed)
@@ -454,9 +454,10 @@ namespace HyperCasual.Runner
         void ZMove()
         {
             Debug.Log(rigidBody.velocity.z);
-            if (disableContinueForce == true) {
+            if (disableContinueForce == true)
+            {
                 rigidBody.AddForce(new Vector3(0, 0, ZMoveAcceraltion), ForceMode.Impulse);
-            } 
+            }
             if (Input.GetKey(KeyCode.W))
             {
                 m_Animator.SetBool("SpeedUp", true);
@@ -522,7 +523,7 @@ namespace HyperCasual.Runner
         {
 
             float InputX = Input.GetAxis("Horizontal");
-            rigidBody.AddForce(new Vector3(XMoveAcceraltion*InputX,0,0), ForceMode.Impulse);
+            rigidBody.AddForce(new Vector3(XMoveAcceraltion * InputX, 0, 0), ForceMode.Impulse);
             if (rigidBody.velocity.x > XMoveSpeed)
             {
                 rigidBody.velocity = new Vector3(XMoveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
@@ -532,12 +533,12 @@ namespace HyperCasual.Runner
                 rigidBody.velocity = new Vector3(-XMoveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             }
 
-            if(Mathf.Abs(InputX)<0.4f)
-                rigidBody.velocity= new Vector3(rigidBody.velocity.x*dragRatio, rigidBody.velocity.y, rigidBody.velocity.z);
-            
+            if (Mathf.Abs(InputX) < 0.4f)
+                rigidBody.velocity = new Vector3(rigidBody.velocity.x * dragRatio, rigidBody.velocity.y, rigidBody.velocity.z);
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                rigidBody.AddForce(new Vector3(0, bounceForce, 0),ForceMode.Impulse);
+                rigidBody.AddForce(new Vector3(0, bounceForce, 0), ForceMode.Impulse);
             }
         }
     }

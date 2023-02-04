@@ -1,0 +1,11 @@
+Thank you for purchasing the Simple Low-Poly Mini Airplanes asset!
+
+Please use the Prefab objects included in the package.
+
+These two aircraft are designed to help cover two different art styles -- The flat-faced low poly look, and the smooth-faced low poly look.
+I plan on updating this package every two weeks with more skins and aircraft. Please feel free to suggest ones you may like!
+The stick, elevator, ailerons, windshield, and wheels are all individial on each of these aircraft and can be manipulated for animation or kept as-is.
+Colliders have been attached to appropriate objects. 
+
+
+If you have any comments or suggestions, feel free to contact me at kevinjongeneel@j2gamestudios.com
