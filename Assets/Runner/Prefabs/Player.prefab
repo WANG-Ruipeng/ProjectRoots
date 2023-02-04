@@ -120,6 +120,7 @@ MonoBehaviour:
   LingYiTiaoGuiYu: 0
   ChongLangBan: 0
   YiDaLiPao: 0
+  isDashing: 0
 --- !u!1001 &5535617742786363833
 PrefabInstance:
   m_ObjectHideFlags: 0
