@@ -34,9 +34,9 @@ public class Tracer : Enemy
     Rigidbody rb;
     float startTime;
     bool isTracing;
-    bool hasFindPlayer;
-    PlayerController Player => PlayerController.Instance;
-    Vector3 ToPlayer => Player.transform.position - transform.position;
+    protected bool hasFindPlayer;
+    protected PlayerController Player => PlayerController.Instance;
+    protected Vector3 ToPlayer => Player.transform.position - transform.position;
 
 
 
@@ -61,7 +61,7 @@ public class Tracer : Enemy
         StartTrace();
         yield return null;
     }
-    bool InsideRange
+    protected bool InsideRange
     {
         get
         {
@@ -79,7 +79,7 @@ public class Tracer : Enemy
         isTracing = true;
     }
 
-    void Percive()
+    protected void Percive()
     {
         StartCoroutine(TargetToPlayer(ToPlayer.normalized));
         hasFindPlayer = true;

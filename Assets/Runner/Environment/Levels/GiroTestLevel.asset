@@ -23,12 +23,12 @@ MonoBehaviour:
   StartPrefab: {fileID: 0}
   EndPrefab: {fileID: 0}
   Spawnables:
-  - SpawnablePrefab: {fileID: 868862734879333921, guid: 99640c9201e9e314bb12e935da2a29a4,
+  - SpawnablePrefab: {fileID: 7394092010810051953, guid: 1c7b8371ff323dc4cb95cb1578a5e0a9,
       type: 3}
-    Position: {x: -9, y: 0.9302244, z: 22}
-    EulerAngles: {x: 30.000008, y: 180, z: 0}
+    Position: {x: 11, y: 0, z: 37}
+    EulerAngles: {x: 0, y: 199.11194, z: 0}
     Scale: {x: 1, y: 1, z: 1}
-    BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    BaseColor: {r: 0, g: 0, b: 0, a: 0}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 3589644939564013512, guid: a91dd83cf1119514393f1e6d72a4bda1,
       type: 3}
@@ -36,4 +36,11 @@ MonoBehaviour:
     EulerAngles: {x: -0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    SnapToGrid: 1
+  - SpawnablePrefab: {fileID: 868862734879333921, guid: 99640c9201e9e314bb12e935da2a29a4,
+      type: 3}
+    Position: {x: -9, y: 0.9302244, z: 22}
+    EulerAngles: {x: 30.000008, y: 180, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    BaseColor: {r: 1, g: 1, b: 1, a: 1}
     SnapToGrid: 1
