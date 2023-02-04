@@ -96,10 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f755fd7f3974b4495ab425a19297fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 1
+  m_SnapToGrid: 0
   duration: 5
-  speed: 1
-  perceptionRange: 5
+  speed: 15
+  perceptionRange: 10
+  horizontalEyeFov: 60
+  firstRotFrame: 30
 --- !u!54 &4585743266729741379
 Rigidbody:
   m_ObjectHideFlags: 0

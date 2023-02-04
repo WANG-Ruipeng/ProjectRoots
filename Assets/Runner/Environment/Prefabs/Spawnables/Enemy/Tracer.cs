@@ -6,7 +6,7 @@ using HyperCasual.Runner;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Collider))]
-public class Tracer : Spawnable
+public class Tracer : Enemy
 {
     /// <summary>
     /// time that tail after
@@ -24,13 +24,12 @@ public class Tracer : Spawnable
     /// 水平视野范围
     /// </summary>
     [Header("水平视野范围")]
-    public float horizontalEyeFox = 60f;
+    public float horizontalEyeFov = 60f;
     [Header("转向玩家时使用的帧数（越大越慢）")]
     public float firstRotFrame = 30f;
 
 
-    const string k_PlayerTag = "Player";
-    const string k_ProjectileTag = "Projectile";
+
 
     Rigidbody rb;
     float startTime;
@@ -38,23 +37,8 @@ public class Tracer : Spawnable
     bool hasFindPlayer;
     PlayerController Player => PlayerController.Instance;
     Vector3 ToPlayer => Player.transform.position - transform.position;
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag(k_PlayerTag))
-        {
-            GameManager.Instance.Lose();
-        }
-        else if (col.CompareTag(k_ProjectileTag))
-        {
-            Slain();
-        }
-    }
 
-    //TODO
-    void Slain()
-    {
-        Destroy(gameObject);
-    }
+
 
     /// <summary>
     /// 花费一定时间旋转向玩家
@@ -72,11 +56,22 @@ public class Tracer : Spawnable
             if (Vector3.Dot((ToPlayer).normalized, transform.forward) > 0.99) break;//如果已经指向玩家了
             transform.Rotate(up, theta);
             i++;
-            Debug.Log(i);
             yield return new WaitForEndOfFrame();
         }
         StartTrace();
         yield return null;
+    }
+    bool InsideRange
+    {
+        get
+        {
+            if (!(ToPlayer.magnitude <= perceptionRange))
+                return false;
+            //检查视野
+            if (Vector3.Dot(ToPlayer.normalized, transform.forward) < Mathf.Cos(horizontalEyeFov / 2))
+                return false;
+            return true;
+        }
     }
     void StartTrace()
     {
@@ -84,14 +79,8 @@ public class Tracer : Spawnable
         isTracing = true;
     }
 
-    void CheckPlayer()
+    void Percive()
     {
-        //检查范围
-        if (!(ToPlayer.magnitude <= perceptionRange))
-            return;
-        //检查视野
-        if (Vector3.Dot(ToPlayer.normalized, transform.forward) < Mathf.Cos(horizontalEyeFox / 2))
-            return;
         StartCoroutine(TargetToPlayer(ToPlayer.normalized));
         hasFindPlayer = true;
     }
@@ -119,13 +108,11 @@ public class Tracer : Spawnable
     {
         base.Update();
         if (!Application.isPlaying)//防止在编辑界面也会动
-        {
             return;
-        }
 
-        if (!hasFindPlayer)
+        if (InsideRange && !hasFindPlayer)
         {
-            CheckPlayer();
+            Percive();
         }
         else if (isTracing)
         {
