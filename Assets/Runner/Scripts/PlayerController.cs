@@ -16,6 +16,28 @@ namespace HyperCasual.Runner
         public static PlayerController Instance => s_Instance;
         static PlayerController s_Instance;
 
+        [Header("速度参数")]
+        [SerializeField] public float ZMoveAcceraltion;//竖直方向的
+        [SerializeField] public float ZMoveSpeed = 10;//鱼稳定下来后往前移动的速度
+        [SerializeField] public float ZFastMoveSpeed = 15;//按住上键时的加速的速度
+        [SerializeField] public float XMoveAcceraltion;//水平方向的加速度
+        [SerializeField] public float XMoveSpeed = 10;//水平方向移动的速度
+        [SerializeField] public float dragRatio=0.9f;//减速系数，数字越小减速越快
+        [SerializeField] public bool disableContinueForce=true;//玩家初始便具有持续性的力使其具有速度，如果想暂时关闭这个持续向前的力则将这个bool关闭即可（可以使用协程实现暂时性的关闭）
+
+        [Header("旋转参数")]
+        public float turnSpeed = 100;
+        public float getBackSpeed = 0.05f;//旋转回来的速度
+        public float maxTrunAngle = 50f;//最大所能旋转的角度
+        bool startDownSpeed=false;//用于标识玩家此时开始减速
+
+        [Header("跳跃参数")]
+        public float bounceForce = 30f;//鱼的跳跃力
+
+        Rigidbody rigidBody;
+
+        public bool gameInput = true;//如果想要
+
         [SerializeField]
         Animator m_Animator;
 
@@ -116,6 +138,10 @@ namespace HyperCasual.Runner
             Initialize();
         }
 
+        private void Start()
+        {
+            rigidBody = GetComponent<Rigidbody>();
+        }
         /// <summary>
         /// Set up all necessary values for the PlayerController.
         /// </summary>
@@ -131,7 +157,7 @@ namespace HyperCasual.Runner
             {
                 m_StartHeight = m_SkinnedMeshRenderer.bounds.size.y;
             }
-            else
+            else 
             {
                 m_StartHeight = 1.0f;
             }
@@ -150,10 +176,10 @@ namespace HyperCasual.Runner
                     return 5.0f;
 
                 case PlayerSpeedPreset.Medium:
-                    return 10.0f;
+                    return 10;
 
                 case PlayerSpeedPreset.Fast:
-                    return 20.0f;
+                    return 15;
             }
 
             return m_CustomPlayerSpeed;
@@ -259,10 +285,11 @@ namespace HyperCasual.Runner
         {
             float deltaTime = Time.deltaTime;
             //Debug.Log(m_TargetSpeed);
-
+            
             UpdateTargetScale(deltaTime);
 
-            UpdateTargetSpeed(deltaTime);
+            //UpdateTargetSpeed(deltaTime);
+
 
 
             float speed = m_Speed * deltaTime;//写着是速度，其实是这一帧内的位移变化量
@@ -270,18 +297,27 @@ namespace HyperCasual.Runner
 
             // Update position
 
-            UpdatePos(speed);
+            //UpdatePos(speed); 因为原有的方式是修改位置实现位移，那样不好实现物理效果
 
-            SetAnimatorSpeed(deltaTime);
-            PlayerTurn(speed);
+            //SetAnimatorSpeed(deltaTime);
+            //PlayerTurn(speed);
 
             m_LastPosition = m_Transform.position;//这一帧结束时更新上一帧的位置
+        }
+
+
+        private void FixedUpdate()
+        {
+            TurnAngle();//旋转头
+            XMoveAndBounce();
+            ZMove();
         }
 
         void Accelerate(float deltaTime, float targetSpeed)
         {
             m_Speed += deltaTime * m_AccelerationSpeed;
             m_Speed = Mathf.Min(m_Speed, targetSpeed);
+            
         }
 
         void Decelerate(float deltaTime, float targetSpeed)
@@ -387,13 +423,122 @@ namespace HyperCasual.Runner
             }
         }
 
-
-
-        void InputHandler()
+        /// <summary>
+        /// 旋转角度
+        /// </summary>
+        void TurnAngle()
         {
+            //Debug.Log(transform.localEulerAngles.y);
             float InputX = Input.GetAxis("Horizontal");
-            float InputY = Input.GetAxis("Vertical");
-            //if(Input.get)
+            if (Mathf.Abs(InputX) > 0.5f)
+            {
+                float YAngle = transform.localEulerAngles.y;
+                if (YAngle >= 0 && YAngle <= maxTrunAngle)
+                    transform.Rotate(0, InputX * Time.deltaTime * turnSpeed, 0);//右转向
+                else if (YAngle >= 360 - maxTrunAngle && YAngle <= 360)
+                {
+                    transform.Rotate(0, InputX * Time.deltaTime * turnSpeed, 0);//左转向，-50度即为310度，所以限定为310~360度内
+                }
+            }
+            else
+            {
+                Quaternion mid = Quaternion.identity;//这个是前方
+                transform.rotation = Quaternion.Slerp(transform.rotation, mid, getBackSpeed);//球面插值，第三个参数是速度
+                                                                                             //当没按下按键时，物体将会旋转回正前方的方向
+            }
+        }
+
+        /// <summary>
+        /// 处理前进方向的速度
+        /// </summary>
+        void ZMove()
+        {
+            Debug.Log(rigidBody.velocity.z);
+            if (disableContinueForce == true) {
+                rigidBody.AddForce(new Vector3(0, 0, ZMoveAcceraltion), ForceMode.Impulse);
+            } 
+            if (Input.GetKey(KeyCode.W))
+            {
+                m_Animator.SetBool("SpeedUp", true);
+                if (rigidBody.velocity.z > ZFastMoveSpeed)
+                {
+                    rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, ZFastMoveSpeed);
+                }
+            }
+            else if (Input.GetKeyUp(KeyCode.W))
+            {
+                m_Animator.SetBool("SpeedUp", false);
+
+            }
+            /*else if (Input.GetKeyUp(KeyCode.W))
+            {
+                //如果玩家松开按键，代表此时需要让玩家减速到原来的速度，并且此时需要禁用持续向前的力
+                DisableContinueForce(1);//禁用一秒，在这一秒内玩家将会减速至初始的速度
+                StartSpeedDown(1);//接下来开始的一秒内玩家将开始减速
+            }
+            else if (startDownSpeed)
+            {
+                float oneSecondDownSpeed = ZFastMoveSpeed - ZMoveSpeed;//在一秒内需要减少的速度量
+
+                rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, rigidBody.velocity.z - oneSecondDownSpeed * Time.deltaTime);
+            }*/
+            else
+            {
+                if (rigidBody.velocity.z > ZMoveSpeed)
+                {
+                    Debug.Log("rigidSpeedZ>ZMoveSpeed");
+
+                    rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, ZMoveSpeed);
+                }
+            }
+        }
+
+        IEnumerator StartSpeedDown(float duration)
+        {
+            startDownSpeed = true;
+            yield return new WaitForSeconds(duration);
+            startDownSpeed = false;
+        }
+
+        /// <summary>
+        /// 如果想暂时禁用物体的持续向前的力则调用这个函数，参数为时间
+        /// </summary>
+        /// <param name="duration"></param>
+        public void DisableContinueForceInterface(float duration)
+        {
+            StartCoroutine(DisableContinueForce(duration));
+        }
+        IEnumerator DisableContinueForce(float duration)
+        {
+            disableContinueForce = false;
+            yield return new WaitForSeconds(duration);
+            disableContinueForce = true;
+        }
+
+        /// <summary>
+        /// 处理水平方向移动
+        /// </summary>
+        void XMoveAndBounce()
+        {
+
+            float InputX = Input.GetAxis("Horizontal");
+            rigidBody.AddForce(new Vector3(XMoveAcceraltion*InputX,0,0), ForceMode.Impulse);
+            if (rigidBody.velocity.x > XMoveSpeed)
+            {
+                rigidBody.velocity = new Vector3(XMoveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            }
+            else if (rigidBody.velocity.x < -XMoveSpeed)
+            {
+                rigidBody.velocity = new Vector3(-XMoveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            }
+
+            if(Mathf.Abs(InputX)<0.4f)
+                rigidBody.velocity= new Vector3(rigidBody.velocity.x*dragRatio, rigidBody.velocity.y, rigidBody.velocity.z);
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rigidBody.AddForce(new Vector3(0, bounceForce, 0),ForceMode.Impulse);
+            }
         }
     }
 }
