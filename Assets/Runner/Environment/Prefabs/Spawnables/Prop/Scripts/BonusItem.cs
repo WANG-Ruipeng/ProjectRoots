@@ -7,6 +7,7 @@ using UnityEditor;
 public class BonusItem : MonoBehaviour
 {
     public enum ePropType { JiaFen, TiShenJuanZhou, ZhuQingTing, TaiYangSan, HongSeNeiKu, LingYiTiaoGuiYu, ChongLangBan, YiDaLiPao }  //道具类型枚举，用拼音写了好理解
+    //替身卷轴->鱼叉，太阳伞->手枪
     public ePropType propType = ePropType.JiaFen;  //inspector中设置道具类型
     public Text text;  //引用text组件
     public string words;  //展示给玩家的物品描述
@@ -39,25 +40,25 @@ public class BonusItem : MonoBehaviour
     {
         text.text = "";
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            player = collision.gameObject;
-            switch (propType)
-            {
-                case ePropType.JiaFen: StartCoroutine(JiaFen()); break;
-                case ePropType.TiShenJuanZhou: StartCoroutine(TiShenJuanZhou()); break;
-                case ePropType.ZhuQingTing: StartCoroutine(ZhuQingTing()); break;
-                case ePropType.TaiYangSan: StartCoroutine(TaiYangSan()); break;
-                case ePropType.HongSeNeiKu: StartCoroutine(HongSeNeiKu()); break;
-                case ePropType.LingYiTiaoGuiYu: StartCoroutine(LingYiTiaoGuiYu()); break;
-                case ePropType.ChongLangBan: StartCoroutine(ChongLangBan()); break;
-                case ePropType.YiDaLiPao: StartCoroutine(YiDaLiPao()); break;
-            }
+    /* private void OnCollisionEnter(Collision collision)
+     {
+         if (collision.gameObject.tag == "Player")
+         {
+             player = collision.gameObject;
+             switch (propType)
+             {
+                 case ePropType.JiaFen: StartCoroutine(JiaFen()); break;
+                 case ePropType.TiShenJuanZhou: StartCoroutine(TiShenJuanZhou()); break;
+                 case ePropType.ZhuQingTing: StartCoroutine(ZhuQingTing()); break;
+                 case ePropType.TaiYangSan: StartCoroutine(TaiYangSan()); break;
+                 case ePropType.HongSeNeiKu: StartCoroutine(HongSeNeiKu()); break;
+                 case ePropType.LingYiTiaoGuiYu: StartCoroutine(LingYiTiaoGuiYu()); break;
+                 case ePropType.ChongLangBan: StartCoroutine(ChongLangBan()); break;
+                 case ePropType.YiDaLiPao: StartCoroutine(YiDaLiPao()); break;
+             }
 
-        }
-    }
+         }
+     }*/
     private void OnTriggerEnter(Collider other)
     {
         player = other.gameObject;
@@ -119,6 +120,11 @@ public class BonusItem : MonoBehaviour
     {
         text.text = words;
         player.GetComponent<PlayerOwnPropsNum>().HongSeNeiKu++;
+        if (player.GetComponent<PlayerOwnPropsNum>().isDashing)  //如果正在触发内裤效果
+        {
+            player.GetComponent<PlayerOwnPropsNum>().CancelInvoke("StopDashing");
+            player.GetComponent<PlayerOwnPropsNum>().StopDashing();  //提前结束上一个冲刺
+        }
         StartCoroutine(player.GetComponent<PlayerOwnPropsNum>().GetHondSeNeiKu(dashTime, dashSpeed));
 
         yield return new WaitForSeconds(showWordsDuration);

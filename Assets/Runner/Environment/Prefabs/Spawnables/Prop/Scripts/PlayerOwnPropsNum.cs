@@ -11,13 +11,14 @@ public class PlayerOwnPropsNum : MonoBehaviour
     public GameObject bulletPrefab;  //炮弹的预设
     public GameObject surfboardPrefab;  //冲浪板预设
     public GameObject scoreTipPrefab;  //分数提示预设
+    public GameObject tailGasPrefab;  //冲刺尾气粒子效果预设
 
     public bool isDashing;  //正在冲刺状态
     public bool isSurfing;  //正在冲浪状态
 
     public float totalPoints;
     public int ZhuQingTing, HongSeNeiKu, ChongLangBan, YiDaLiPao;  //获得的道具数量
-
+    //替身卷轴->三叉戟，太阳伞->小帮手
     [SerializeField] private int _TiShenJuanZhou, _TaiYangSan, _LingYiTiaoGuiYu;  //这几个道具不是立即使用的
     #region   修改这些非立即使用道具时跳出提示
     public int TiShenJuanZhou
@@ -25,8 +26,8 @@ public class PlayerOwnPropsNum : MonoBehaviour
         get { return _TiShenJuanZhou; }
         set
         {
-            if (value > _TiShenJuanZhou) { StartCoroutine(PropTip("替身卷轴 + 1")); _TiShenJuanZhou++; }
-            else if (value < _TiShenJuanZhou) { StartCoroutine(PropTip("替身卷轴 - 1")); _TiShenJuanZhou--; }
+            if (value > _TiShenJuanZhou) { StartCoroutine(PropTip("三叉戟 + 1")); _TiShenJuanZhou++; }
+            else if (value < _TiShenJuanZhou) { StartCoroutine(PropTip("三叉戟 - 1")); _TiShenJuanZhou--; }
         }
     }
 
@@ -35,8 +36,8 @@ public class PlayerOwnPropsNum : MonoBehaviour
         get { return _TaiYangSan; }
         set
         {
-            if (value > _TaiYangSan) { StartCoroutine(PropTip("太阳伞 + 1")); _TaiYangSan++; }
-            else if (value < _TaiYangSan) { StartCoroutine(PropTip("太阳伞 - 1")); _TaiYangSan--; }
+            if (value > _TaiYangSan) { StartCoroutine(PropTip("小帮手 + 1")); _TaiYangSan++; }
+            else if (value < _TaiYangSan) { StartCoroutine(PropTip("小帮手 - 1")); _TaiYangSan--; }
         }
     }
 
@@ -90,6 +91,7 @@ public class PlayerOwnPropsNum : MonoBehaviour
         StartCoroutine(ScoreTipUpward(scoreTip, upwardSpeed));
     }
     #endregion
+
 
     #region 部分道具增减时弹出提示
     [Header("部分道具增减时弹出提示的参数")]
@@ -168,29 +170,43 @@ public class PlayerOwnPropsNum : MonoBehaviour
     #endregion
 
 
-
-    #region 红色内裤
-    private float dashTime, dashSpeed;
+    #region 红色内裤（冲刺）
+    private float dashTime, dashSpeed, _originalZMaxSpeed, _originalZAccelaration;
+    private GameObject tailGas;
     public IEnumerator GetHondSeNeiKu(float dT, float dS)
     {
         dashTime = dT;
         dashSpeed = dS;
-
+        //保存原速度
         PlayerController playerController = GetComponent<PlayerController>();
-        float originalZMaxSpeed = playerController.ZMoveSpeed;
-        float originalZAccelaration = playerController.ZMoveAcceraltion;
-
+        _originalZMaxSpeed = playerController.ZMoveSpeed;
+        _originalZAccelaration = playerController.ZMoveAcceraltion;
+        //修改速度
         playerController.ZMoveSpeed = dashSpeed;  //更改最大x速度
         playerController.ZMoveAcceraltion *= 5;  //加速度翻5倍
         isDashing = true;  //冲刺状态
+                           //增加尾气粒子效果
+        tailGas = Instantiate(tailGasPrefab);
+        Vector3 tGPos = tailGas.transform.localPosition;
+        tailGas.transform.SetParent(this.transform);
+        tailGas.transform.localPosition = tGPos;
+        tailGas.GetComponent<ParticleSystem>().Play(true);
 
 
         yield return new WaitForSeconds(dashTime);
-        playerController.ZMoveSpeed = originalZMaxSpeed;
-        playerController.ZMoveAcceraltion = originalZAccelaration;
+        Invoke("StopDashing", dashTime);
+    }
+    public void StopDashing()
+    {
+        PlayerController playerController = GetComponent<PlayerController>();
+        playerController.ZMoveSpeed = _originalZMaxSpeed;
+        print("originalZ  " + _originalZMaxSpeed);
+        playerController.ZMoveAcceraltion = _originalZAccelaration;
         isDashing = false;
+        Destroy(tailGas);  //消除粒子
     }
     #endregion
+
 
     #region 冲浪板
     public IEnumerator GetChongLangBan(float surf_Time, float surf_Speed, float surfboardYOffset)

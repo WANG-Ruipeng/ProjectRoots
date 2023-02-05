@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using HyperCasual.Gameplay;
 using UnityEngine;
+using UnityEditor;
 
 namespace HyperCasual.Runner
 {
@@ -43,7 +44,13 @@ namespace HyperCasual.Runner
             // base.Awake();
             m_Transform = transform;  //²¹µÄ
 
-
+            if (LevelManager.Instance != null)
+            {
+#if UNITY_EDITOR
+                if (PrefabUtility.IsPartOfNonAssetPrefabInstance(gameObject))
+#endif
+                    m_Transform.SetParent(LevelManager.Instance.transform);
+            }
             m_Renderers = gameObject.GetComponentsInChildren<Renderer>();
         }
 

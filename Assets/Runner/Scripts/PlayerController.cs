@@ -453,7 +453,7 @@ namespace HyperCasual.Runner
         /// </summary>
         void ZMove()
         {
-            Debug.Log(rigidBody.velocity.z);
+            //Debug.Log(rigidBody.velocity.z);
             if (disableContinueForce == true)
             {
                 rigidBody.AddForce(new Vector3(0, 0, ZMoveAcceraltion), ForceMode.Impulse);
@@ -487,9 +487,10 @@ namespace HyperCasual.Runner
             {
                 if (rigidBody.velocity.z > ZMoveSpeed)
                 {
-                    Debug.Log("rigidSpeedZ>ZMoveSpeed");
+                    //Debug.Log("rigidSpeedZ>ZMoveSpeed");
 
                     rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, ZMoveSpeed);
+                    Debug.Log(rigidBody.velocity);
                 }
             }
         }

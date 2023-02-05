@@ -108,7 +108,7 @@ MonoBehaviour:
             m_TypeName: Unity.Hypercasual.Tutorials.Editor.DuplicateLevelCriterion,
               Unity.Hypercasual.Tutorials.Editor, Version=0.0.0.0, Culture=neutral,
               PublicKeyToken=null
-          Criterion: {fileID: 5088167140067499974}
+          Criterion: {fileID: 0}
       m_MaskingSettings:
         m_MaskingEnabled: 0
         m_UnmaskedViews: []
@@ -184,24 +184,3 @@ MonoBehaviour:
       m_Calls: []
   m_NextButton: Next
   m_DoneButton: Done
---- !u!114 &5088167140067499974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3ba23431a778e40b105ce2070a94e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Completed:
-    m_PersistentCalls:
-      m_Calls: []
-  Invalidated:
-    m_PersistentCalls:
-      m_Calls: []
-  isTesting: 1
-  levelsFolderPath: Assets/Runner/Environment/Levels/
-  desiredNewInstances: 1
