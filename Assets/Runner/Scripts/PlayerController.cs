@@ -28,11 +28,14 @@ namespace HyperCasual.Runner
         [Header("旋转参数")]
         public float turnSpeed = 100;
         public float getBackSpeed = 0.05f;//旋转回来的速度
-        public float maxTrunAngle = 50f;//最大所能旋转的角度
+        public float maxTurnAngle = 50f;//最大所能旋转的角度
         bool startDownSpeed = false;//用于标识玩家此时开始减速
 
         [Header("跳跃参数")]
         public float bounceForce = 30f;//鱼的跳跃力
+
+        [Header("场景宽度")]
+        public float sceneWidth = 50;
 
         Rigidbody rigidBody;
 
@@ -290,7 +293,7 @@ namespace HyperCasual.Runner
 
             //UpdateTargetSpeed(deltaTime);
 
-
+            LimitEdge();
 
             float speed = m_Speed * deltaTime;//写着是速度，其实是这一帧内的位移变化量
 
@@ -412,6 +415,16 @@ namespace HyperCasual.Runner
         }
 
         /// <summary>
+        /// 限制边界
+        /// </summary>
+        void LimitEdge()
+        {
+            float posX = transform.position.x;
+            posX = Mathf.Clamp(posX, -sceneWidth, sceneWidth);//限定范围不超过最大的X横向范围
+            transform.position = new Vector3(posX, transform.position.y, transform.position.z);
+        }
+
+        /// <summary>
         /// 实现玩家的转向
         /// </summary>
         void PlayerTurn(float speed)
@@ -433,12 +446,8 @@ namespace HyperCasual.Runner
             if (Mathf.Abs(InputX) > 0.5f)
             {
                 float YAngle = transform.localEulerAngles.y;
-                if (YAngle >= 0 && YAngle <= maxTrunAngle)
-                    transform.Rotate(0, InputX * Time.deltaTime * turnSpeed, 0);//右转向
-                else if (YAngle >= 360 - maxTrunAngle && YAngle <= 360)
-                {
-                    transform.Rotate(0, InputX * Time.deltaTime * turnSpeed, 0);//左转向，-50度即为310度，所以限定为310~360度内
-                }
+                if (YAngle >= 0 && YAngle <= maxTurnAngle || (YAngle >= 360 - maxTurnAngle && YAngle <= 360))
+                    transform.Rotate(0, InputX * Time.deltaTime * turnSpeed, 0);
             }
             else
             {
@@ -446,6 +455,9 @@ namespace HyperCasual.Runner
                 transform.rotation = Quaternion.Slerp(transform.rotation, mid, getBackSpeed);//球面插值，第三个参数是速度
                                                                                              //当没按下按键时，物体将会旋转回正前方的方向
             }
+            /*Vector3 yRot = transform.localEulerAngles;
+            yRot.y = Mathf.Clamp(yRot.y, -50, 50);
+            transform.localEulerAngles = yRot;*/
         }
 
         /// <summary>
@@ -485,6 +497,8 @@ namespace HyperCasual.Runner
             }*/
             else
             {
+                m_Animator.SetBool("SpeedUp", false);
+
                 if (rigidBody.velocity.z > ZMoveSpeed)
                 {
                     //Debug.Log("rigidSpeedZ>ZMoveSpeed");

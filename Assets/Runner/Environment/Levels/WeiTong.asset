@@ -33,7 +33,7 @@ MonoBehaviour:
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 3913642403923855951, guid: 0f3322f5d92be8445aed6d29f71a1597,
       type: 3}
-    Position: {x: 0, y: 1.18, z: 12}
+    Position: {x: 6, y: 0, z: 13}
     EulerAngles: {x: -0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 3913642403923855951, guid: 0f3322f5d92be8445aed6d29f71a1597,
       type: 3}
-    Position: {x: 6.054738, y: 0, z: 13.472692}
+    Position: {x: 0, y: 1.18, z: 12}
     EulerAngles: {x: -0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}
