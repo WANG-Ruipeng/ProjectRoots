@@ -58,7 +58,7 @@ MonoBehaviour:
   disableContinueForce: 1
   turnSpeed: 300
   getBackSpeed: 0.3
-  maxTrunAngle: 50
+  maxTurnAngle: 50
   bounceForce: 10
   sceneWidth: 50
   gameInput: 1
